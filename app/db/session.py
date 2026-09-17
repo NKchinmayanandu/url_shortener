@@ -3,11 +3,11 @@ from sqlalchemy.ext.asyncio import AsyncSession,async_sessionmaker, create_async
 from app.core.config import settings
 
 engines = [
-    create_async_engine(settings.POSTGRES_URL_0,
+    create_async_engine(settings.DATABASE_URL0,
                         pool_size=10,max_overflow=20),
-    create_async_engine(settings.POSTGRES_URL_1,pool_size=10,
+    create_async_engine(settings.DATABASE_URL1,pool_size=10,
                         max_overflow=20),
-    create_async_engine(settings.POSTGRES_URL_2,pool_size=10,
+    create_async_engine(settings.DATABASE_URL2,pool_size=10,
                         max_overflow=20),
 ]
 

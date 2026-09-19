@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 from app.services.url_service import shorten_url
 from app.services.redirect_service import redirect_url
 import os
@@ -18,5 +19,6 @@ async def health():
 
 @app.get("/{short_code}")
 async def redirect(short_code: str):
-    return await redirect_url(short_code=short_code)
+    url = await redirect_url(short_code=short_code)
+    return RedirectResponse(url=url)
 

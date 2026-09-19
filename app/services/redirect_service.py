@@ -5,9 +5,9 @@ async def redirect_url(short_code:str):
     url = await get_cache(short_code=short_code)
 
     if url:
-        return {"url":url}
+        return url
     
-    shard = await get_shard(short_code=short_code)
+    shard = get_shard(short_code=short_code)
 
     url = await get_url(shard=shard,short_code=short_code)
 
@@ -16,7 +16,7 @@ async def redirect_url(short_code:str):
 
     await set_cache(short_code=short_code,url=url)
 
-    return {"url":url}
+    return url
 
 
 

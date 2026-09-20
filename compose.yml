@@ -52,6 +52,8 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_0_data:/var/lib/postgresql/data
     networks:
       - app-network
 
@@ -61,6 +63,8 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_1_data:/var/lib/postgresql/data
     networks:
       - app-network
 
@@ -70,9 +74,10 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_2_data:/var/lib/postgresql/data
     networks:
       - app-network
-
   redis-0:
     image: redis:8
     networks:
@@ -91,6 +96,11 @@ services:
       - app-1
       - app-2
       - app-3
+
+volumes:
+  postgres_0_data:
+  postgres_1_data:
+  postgres_2_data:
 
 networks:
   app-network:

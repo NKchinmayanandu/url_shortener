@@ -96,6 +96,12 @@ services:
       - app-1
       - app-2
       - app-3
+  k6:
+    image: grafana/k6:latest
+    networks:
+      - app-network
+    volumes:
+      - ./k6:/scripts:ro
 
 volumes:
   postgres_0_data:

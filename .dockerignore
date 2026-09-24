@@ -1,0 +1,6 @@
+.env
+venv/
+__pycache__/
+.git/
+k6/
+nginx/

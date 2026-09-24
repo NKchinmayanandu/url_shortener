@@ -10,7 +10,9 @@ services:
       - .:/app
     environment:
       - INSTANCE_ID=app-1
-      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres-0:5432/${POSTGRES_DB}
+      - DATABASE_URL_0=${DATABASE_URL_0}
+      - DATABASE_URL_1=${DATABASE_URL_1}
+      - DATABASE_URL_2=${DATABASE_URL_2}
       - REDIS_URL=redis://redis-0:6379
     depends_on:
       - postgres-0
@@ -25,10 +27,14 @@ services:
       - .:/app
     environment:
       - INSTANCE_ID=app-2
-      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres-0:5432/${POSTGRES_DB}
+      - DATABASE_URL_0=${DATABASE_URL_0}
+      - DATABASE_URL_1=${DATABASE_URL_1}
+      - DATABASE_URL_2=${DATABASE_URL_2}
       - REDIS_URL=redis://redis-0:6379
     depends_on:
       - postgres-0
+      - postgres-1
+      - postgres-2
       - redis-0
 
   app-3:
@@ -40,7 +46,9 @@ services:
       - .:/app
     environment:
       - INSTANCE_ID=app-3
-      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres-0:5432/${POSTGRES_DB}
+      - DATABASE_URL_0=${DATABASE_URL_0}
+      - DATABASE_URL_1=${DATABASE_URL_1}
+      - DATABASE_URL_2=${DATABASE_URL_2}
       - REDIS_URL=redis://redis-0:6379
     depends_on:
       - postgres-0
